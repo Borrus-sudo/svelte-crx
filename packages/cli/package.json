@@ -1,0 +1,27 @@
+{
+    "name": "@svelte-crx/cli",
+    "license": "MIT",
+    "scripts": {
+        "start": "pnpm dlx unbuild && node ./bin/svelte-crx.mjs",
+        "build": "pnpm dlx unbuild"
+    },
+    "bin": {
+        "crx": "./bin/svelte-crx.mjs"
+    },
+    "files": [
+        "dist",
+        "bin"
+    ],
+    "dependencies": {
+        "cac": "^6.7.14",
+        "find-free-ports": "^3.1.1"
+    },
+    "peerDependencies": {
+        "vite": "^5.4.1"
+    },
+    "devDependencies": {
+        "@types/chrome": "^0.0.272",
+        "@types/node": "^22.7.4",
+        "unbuild": "^2.0.0"
+    }
+}
