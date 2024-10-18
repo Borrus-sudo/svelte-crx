@@ -1,5 +1,6 @@
 <script lang="ts">
-    import Popup from './index.svelte';           
+    import '../app.css';
+    import Popup from './index.svelte';
 </script>
 
 <Popup />

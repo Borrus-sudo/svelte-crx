@@ -4,25 +4,28 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "",
+    "dev": "pnpm exec svelte-crx",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.253",
-    "@svelte-crx/cli": "workspace:^",
     "@sveltejs/vite-plugin-svelte": "^3.1.1",
     "@tsconfig/svelte": "^5.0.4",
-    "@unocss/extractor-svelte": "^0.62.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
     "svelte": "^4.2.18",
     "svelte-check": "^3.8.5",
+    "tailwindcss": "^3.4.14",
     "tslib": "^2.6.3",
     "typescript": "^5.5.3",
-    "unocss": "^0.62.4",
     "unplugin-icons": "^0.19.3",
     "vite": "^5.4.1",
     "vite-plugin-inspect": "^0.8.7",
     "webext-bridge": "^6.0.1"
+  },
+  "dependencies": {
+    "@svelte-crx/cli": "workspace:^"
   }
 }
