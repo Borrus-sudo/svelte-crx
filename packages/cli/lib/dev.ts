@@ -2,6 +2,7 @@ import findFreePorts from "find-free-ports";
 import path from "path";
 import { createServer } from "vite";
 import stubEntryPoint from "./plugins/iso/entrypoint";
+import { launchChrome } from "./utils/chrome";
 
 
 
@@ -18,7 +19,9 @@ export async function dev(root: string) {
         plugins: [stubEntryPoint()]
     })
     await server.listen()
+    server.moduleGraph.createFileOnlyEntry
     // 
     server.printUrls()
     server.bindCLIShortcuts({ print: true })
+    await launchChrome();
 }

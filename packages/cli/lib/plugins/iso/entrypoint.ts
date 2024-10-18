@@ -28,25 +28,28 @@ export default app
 
 
 export default function stubEntryPoint(): Plugin {
-    const virtualize = (id: string) => {
-        const virtualModuleId = "\0virtual:svelte-crx";
-        return virtualModuleId + id
-    };
-    const entryPoints = ["/popup.html", "/content.html", "/main.ts"];
-    const modulesMap = new Map([[virtualize(entryPoints[0]), popupEntrypoint], [virtualize(entryPoints[2]), popupMainfile]]);
-    return {
-        name: "vite-svelte-crx-stub-entrypoint",
-        enforce: "pre",
-        resolveId(id: string) {
-            console.log(id)
-            if (entryPoints.includes(id)) {
-                return virtualize(id);
-            }
-        },
-        load(virtualModuleId: string) {
-            if (modulesMap.has(virtualModuleId))
-                return modulesMap.get(virtualModuleId)
-        }
+  const virtualize = (id: string) => {
+    const virtualModuleId = "\0virtual:svelte-crx";
+    return virtualModuleId + id
+  };
+  const entryPoints = ["/popup", "/content.html", "/main.ts"];
+  const modulesMap = new Map([[virtualize(entryPoints[0]), popupEntrypoint], [virtualize(entryPoints[2]), popupMainfile]]);
+  return {
+    name: "vite-svelte-crx-stub-entrypoint",
+    enforce: "pre",
+    transform(...stuff) {
+      console.log(JSON.stringify({ stuff }, null, 2))
+    },
+    resolveId(id: string) {
+      console.log(id)
+      if (entryPoints.includes(id)) {
+        return virtualize(id);
+      }
+    },
+    load(virtualModuleId: string) {
+      if (modulesMap.has(virtualModuleId))
+        return modulesMap.get(virtualModuleId)
     }
+  }
 
 }
