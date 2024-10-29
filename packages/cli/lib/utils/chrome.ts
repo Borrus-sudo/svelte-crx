@@ -12,8 +12,6 @@ export async function launchChrome() {
         // fuck
         if (stderr)
             panic(`Failed to load chrome.exe at path ${path}. Seems you like gotta manually debug the chrome extension! Reference: (https://www.youtube.com/watch?v=Ta-YTDhiBIQ)`)
-
-
     }
     // else the chrome exe should just open 
-}   
+}    
